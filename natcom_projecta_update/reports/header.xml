@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="natcom_einvoice_formate.natcom_header">
+        <t t-call="web.html_container">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!--  Multicompany  -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+            <div class="header">
+                <link href="//db.onlinewebfonts.com/c/48369f2fdbb41569429b8c2b77ebac77?family=Neuropolitical"
+                      rel="stylesheet" type="text/css"/>
+                <style>
+                    @import url('https://fonts.cdnfonts.com/css/neuropolitical');
+                </style>
+                <div class="row">
+                    <div class="col-12">
+                        <table style="width:100%;page-break-inside: avoid;">
+                            <tr>
+                                <th style="font-size:20px;font-style: Arial;color:grey;">
+                                    <t t-esc="o.company_id.name"/>
+                                </th>
+                                <th style="font-size:30px;font-style: Neuropolitical;color:red;">
+                                    PROJECTA
+                                </th>
+                                <th style="font-size:20px;font-style: Arial;color:grey;text-align:right;">
+                                    <t t-esc="o.company_id.arabic"/>
+                                </th>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto">
+                <div t-field="company.partner_id"
+                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+            </div>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_background_footer">
+                <div>
+                    <div t-field="company.report_footer"/>
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+
+                        <!--    <hr style="width:100%;" color="blue"></hr>-->
+                        <div class="row">
+                            <div class="col-6" style="text-align:right;color:black">
+                                <strong>
+                                    Page:
+                                    <span class="page"/>
+                                    of
+                                    <span class="topage"/>
+                                </strong>
+                            </div>
+                            <div class="col-6" style="text-align:right;">
+                                <span style="color:gray;"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table style="width:100%;page-break-inside: avoid;">
+                                    <tr>
+                                        <td>
+                                            <img t-if="o.company_id.footer_img"
+                                                 t-att-src="image_data_uri(o.company_id.footer_img)"
+                                                 style="width:100%;"
+                                                 alt="Footer"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="projecta_custom_formate.projecta_header">
+        <t t-call="web.html_container">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!--  Multicompany  -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+            <div class="header">
+                <link href="//db.onlinewebfonts.com/c/48369f2fdbb41569429b8c2b77ebac77?family=Neuropolitical"
+                      rel="stylesheet" type="text/css"/>
+                <style>
+                    @import url('https://fonts.cdnfonts.com/css/neuropolitical');
+                </style>
+                <div class="row">
+                    <div class="col-12">
+                        <table style="width:100%;page-break-inside: avoid;">
+                            <tr>
+                                <th style="font-size:20px;font-style: Arial;color:grey;">
+                                    <t t-esc="o.company_id.name"/>
+                                </th>
+                                <th style="font-size:30px;font-style: Neuropolitical;color:red;">
+                                    PROJECTA
+                                </th>
+                                <th style="font-size:20px;font-style: Arial;color:grey;text-align:right;">
+                                    <t t-esc="o.company_id.arabic"/>
+                                </th>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto">
+                <div t-field="company.partner_id"
+                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+            </div>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_background_footer">
+                <div>
+                    <div t-field="company.report_footer"/>
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+
+                        <!--    <hr style="width:100%;" color="blue"></hr>-->
+                        <div class="row">
+                            <div class="col-6" style="text-align:right;color:black">
+                                <strong>
+                                    Page:
+                                    <span class="page"/>
+                                    of
+                                    <span class="topage"/>
+                                </strong>
+                            </div>
+                            <div class="col-6" style="text-align:right;">
+                                <span style="color:gray;"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table style="width:100%;page-break-inside: avoid;">
+                                    <tr>
+                                        <td>
+                                            <img t-if="o.company_id.footer_img"
+                                                 t-att-src="image_data_uri(o.company_id.footer_img)"
+                                                 style="width:100%;"
+                                                 alt="Footer"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+</odoo>
